@@ -1,51 +1,97 @@
-.cabecalho, .noticia1, .noticia2, .noticia3, .noticia4, .principal {
-    border: 1px solid black;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho,
+.noticia1,
+.noticia2,
+.noticia3,
+.noticia4,
+.principal {
+  border: 1px solid black;
+  padding: 1rem;
+  margin: 1rem;
 }
 
 .cabecalho {
-    font-size: 24px;
-    padding: 20px 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
 }
 
-.noticia1, .noticia2, .noticia3, .noticia4 {
-    margin: 5px;
-    padding: 5px;
-    width: 20vw;
+.noticia1,
+.noticia2,
+.noticia3,
+.noticia4 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin: 0.5rem;
+  padding: 0.5rem;
+  width: 100%;
 }
 
-.noticia2 {
-    width: 30vw;
+/*  especificidade maior que a classe  */
+div[class^="noticia"] p {
+  max-width: 17ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-top: 0.5rem;
 }
 
-.principal{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 10px;
+.principal {
+  display: flex;
+  flex-wrap: wrap;
 }
 
-@media screen and (min-width: 500px) and (max-width: 1000px) {
-    .noticia1, .noticia3 {
-        width: 25vw;
-    }
+@media screen and (min-width: 960px) {
+  div[class^="noticia"] {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    .noticia2 {
-        width: 34vw;
-    }
+  div[class^="noticia"] p {
+    max-width: unset;
+    overflow: unset;
+    text-overflow: unset;
+    white-space: unset;
+  }
 
-    .noticia4 {
-        width: 100vw;
-    }
-    
+  .noticia1,
+  .noticia3 {
+    width: calc(30vw - 3rem);
+  }
+
+  .noticia2 {
+    width: calc(40vw - 4.5rem);
+  }
+
+  .noticia4 {
+    width: 100vw;
+  }
 }
 
-@media screen and (max-width: 500px) {
-    .noticia1, .noticia2, .noticia3, .noticia4 {
-        width: 100vw;
-    }
+@media screen and (min-width: 1920px) {
+  .noticia1,
+  .noticia3,
+  .noticia4 {
+    width: calc(20vw - 4.15rem);
+  }
+
+  .noticia2 {
+    width: calc(40vw - 0.2rem);
+  }
 }
+
+/* @media screen and (max-width: 500px) {
+  .noticia1,
+  .noticia2,
+  .noticia3,
+  .noticia4 {
+    width: 100vw;
+  }
+} */
